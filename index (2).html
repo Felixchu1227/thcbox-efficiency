@@ -1,0 +1,39 @@
+
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ThcBox 效率計算器</title>
+</head>
+<body style="font-family: sans-serif; padding: 20px; max-width: 600px; margin: auto;">
+
+  <h2>ThcBox 裝箱效率計算器（小時版）</h2>
+  <p>輸入你今天裝了幾箱、花了幾小時，我幫你算出效率（每分鐘裝箱數除以 1500）</p>
+
+  <label for="boxes">📦 箱數：</label>
+  <input type="number" id="boxes" placeholder="例如：90"><br><br>
+
+  <label for="time">⏱️ 時間（小時）：</label>
+  <input type="number" id="time" placeholder="例如：2.5"><br><br>
+
+  <button onclick="calculateEfficiency()">🚀 計算效率</button><br><br>
+
+  <h3 id="result" style="color: #007bff;"></h3>
+
+  <script>
+    function calculateEfficiency() {
+      const boxes = parseFloat(document.getElementById("boxes").value);
+      const timeHours = parseFloat(document.getElementById("time").value);
+      if (!boxes || !timeHours || timeHours === 0) {
+        document.getElementById("result").innerText = "請輸入有效數值（時間不能為 0）";
+        return;
+      }
+      const timeMinutes = timeHours * 60;
+      const efficiency = (boxes / timeMinutes) / 1500;
+      document.getElementById("result").innerText = "👉 你的效率是：" + efficiency.toFixed(6) + "（箱/分鐘 ÷ 1500）";
+    }
+  </script>
+
+</body>
+</html>
